@@ -19,13 +19,13 @@ public class SupermarketController {
     SupermarketService supermarketService;
 
     @RequestMapping("/add")
-    Supermarket addSupermarket(SupermarketDto supermarketDto){
+    public Supermarket addSupermarket(SupermarketDto supermarketDto){
         return supermarketService.addSupermarket(supermarketDto);
     }
 
     @RequestMapping("/addProduct/{marketName}")
-    ResponseEntity<?> addProductToSupermarket(@PathVariable MarketName name, MarketProductDto marketProductDto){
-        return supermarketService.addMarketProduct(name, marketProductDto);
+    public ResponseEntity<?> addProductToSupermarket(@PathVariable MarketName marketName, MarketProductDto marketProductDto){
+        return supermarketService.addMarketProduct(marketName, marketProductDto);
     }
 
 

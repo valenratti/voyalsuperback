@@ -20,12 +20,12 @@ public class MarketProductController {
     MarketProductService marketProductService;
 
     @RequestMapping("/getAll/{productId}")
-    List<MarketProduct> getAllMarketProducts(@PathVariable Long productId){
+    public List<MarketProduct> getAllMarketProducts(@PathVariable Long productId){
         return marketProductService.getMarketProductsByProductId(productId);
     }
 
     @RequestMapping("/get/{productId}")
-    Optional<MarketProduct> getMarketProductInSupermarket(@PathVariable Long productId, @RequestParam MarketName supermarket){
+    public Optional<MarketProduct> getMarketProductInSupermarket(@PathVariable Long productId, @RequestParam MarketName supermarket){
         return marketProductService.getMarketProductByProductIdAndSupermarket(productId,supermarket);
     }
 }
