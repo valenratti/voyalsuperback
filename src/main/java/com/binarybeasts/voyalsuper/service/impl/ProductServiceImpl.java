@@ -36,8 +36,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+    public void deleteByEan(String ean) {
+        productRepository.deleteByEan(ean);
     }
 
     @Override

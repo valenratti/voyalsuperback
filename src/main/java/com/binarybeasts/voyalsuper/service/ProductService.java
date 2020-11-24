@@ -15,7 +15,7 @@ public interface ProductService {
 
     Product addProduct(ProductDto product);
 
-    void deleteProduct(Long id);
+    void deleteByEan(String ean);
 
     Optional<Product> getProductByEan(String ean);
 

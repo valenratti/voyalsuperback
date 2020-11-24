@@ -15,6 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findByEan(String ean);
 
+    void deleteByEan(String ean);
+
     List<Product> findAllByCategory(ProductCategory category);
 
     Page<Product> findAllByCategory(ProductCategory category, Pageable pageable);
