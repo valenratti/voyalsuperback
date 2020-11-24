@@ -10,5 +10,5 @@ public interface SupermarketService {
 
     Supermarket addSupermarket(SupermarketDto supermarketDto);
 
-    ResponseEntity<?> addMarketProduct(MarketName supermarket, MarketProductDto marketProductDto);
+    ResponseEntity<?> addMarketProduct(MarketProductDto marketProductDto);
 }

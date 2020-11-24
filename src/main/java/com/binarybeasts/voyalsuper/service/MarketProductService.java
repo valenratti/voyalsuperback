@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public interface MarketProductService {
 
-    List<MarketProduct> getMarketProductsByProductId(Long id);
+    List<MarketProduct> getMarketProductsByProductEan(String ean);
 
-    Optional<MarketProduct> getMarketProductByProductIdAndSupermarket(Long id, MarketName supermarket);
+    Optional<MarketProduct> getMarketProductByProductEanAndSupermarket(String ean, MarketName supermarket);
 
 }

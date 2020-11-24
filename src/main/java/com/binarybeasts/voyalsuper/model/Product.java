@@ -5,15 +5,16 @@ import com.binarybeasts.voyalsuper.model.enums.ProductCategory;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String ean;
 
     @NotBlank
     private String description;
@@ -23,31 +24,21 @@ public class Product {
     private ProductCategory category;
 
     @NotBlank
-    private String ean;
-
-    @NotBlank
     private String imgUrl;
 
     @ManyToMany
-    private List<Supermarket> marketsWithStock;
+    private Set<Supermarket> marketsWithStock;
 
     public Product() {
+        this.marketsWithStock = new HashSet<>();
     }
 
-    public Product(@NotBlank String description, @NotBlank ProductCategory category, @NotBlank String ean, @NotBlank String imgUrl, List<Supermarket> marketsWithStock) {
+    public Product(@NotBlank String description, @NotBlank ProductCategory category, @NotBlank String ean, @NotBlank String imgUrl) {
         this.description = description;
         this.category = category;
         this.ean = ean;
         this.imgUrl = imgUrl;
-        this.marketsWithStock = marketsWithStock;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.marketsWithStock = new HashSet<>();
     }
 
     public String getDescription() {
@@ -82,7 +73,7 @@ public class Product {
         this.imgUrl = imgUrl;
     }
 
-    public List<Supermarket> getMarketsWithStock() {
+    public Set<Supermarket> getMarketsWithStock() {
         return marketsWithStock;
     }
 }

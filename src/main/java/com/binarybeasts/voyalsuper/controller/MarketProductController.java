@@ -1,13 +1,11 @@
 package com.binarybeasts.voyalsuper.controller;
 
 import com.binarybeasts.voyalsuper.model.MarketProduct;
+import com.binarybeasts.voyalsuper.model.Supermarket;
 import com.binarybeasts.voyalsuper.model.enums.MarketName;
 import com.binarybeasts.voyalsuper.service.MarketProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,13 +17,13 @@ public class MarketProductController {
     @Autowired
     MarketProductService marketProductService;
 
-    @RequestMapping("/getAll/{productId}")
-    public List<MarketProduct> getAllMarketProducts(@PathVariable Long productId){
-        return marketProductService.getMarketProductsByProductId(productId);
+    @GetMapping("/getAll/{productEan}")
+    public List<MarketProduct> getAllMarketProducts(@PathVariable String productEan){
+        return marketProductService.getMarketProductsByProductEan(productEan);
     }
 
-    @RequestMapping("/get/{productId}")
-    public Optional<MarketProduct> getMarketProductInSupermarket(@PathVariable Long productId, @RequestParam MarketName supermarket){
-        return marketProductService.getMarketProductByProductIdAndSupermarket(productId,supermarket);
+    @GetMapping("/get/{productEan}")
+    public Optional<MarketProduct> getMarketProductInSupermarket(@PathVariable String productEan, @RequestParam MarketName supermarket){
+        return marketProductService.getMarketProductByProductEanAndSupermarket(productEan, supermarket);
     }
 }

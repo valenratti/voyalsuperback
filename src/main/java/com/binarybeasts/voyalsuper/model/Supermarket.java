@@ -1,10 +1,13 @@
 package com.binarybeasts.voyalsuper.model;
 
 import com.binarybeasts.voyalsuper.model.enums.MarketName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Supermarket {
@@ -15,19 +18,23 @@ public class Supermarket {
 
     @NotBlank
     @Column(unique = true)
+    @Enumerated(EnumType.STRING)
     private MarketName name;
 
     @OneToMany
+    @JsonIgnore
     @JoinTable(name = "market_products", joinColumns = @JoinColumn(name = "market_id", referencedColumnName = "id"),
                     inverseJoinColumns = @JoinColumn(name = "market_product_id", referencedColumnName = "id"))
-    private List<MarketProduct> productList;
+    private Set<MarketProduct> productList;
 
     public Supermarket() {
+        this.productList = new HashSet<>();
     }
 
-    public Supermarket(@NotBlank MarketName name, List<MarketProduct> productList) {
+    public Supermarket(@NotBlank MarketName name) {
         this.name = name;
         this.productList = productList;
+        this.productList = new HashSet<>();
     }
 
     public Long getId() {
@@ -46,11 +53,15 @@ public class Supermarket {
         this.name = name;
     }
 
-    public List<MarketProduct> getProductList() {
+    public Set<MarketProduct> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<MarketProduct> productList) {
+    public void setProductList(Set<MarketProduct> productList) {
         this.productList = productList;
+    }
+
+    public void addProduct(MarketProduct product){
+        productList.add(product);
     }
 }

@@ -1,6 +1,7 @@
 package com.binarybeasts.voyalsuper.model;
 
 import com.binarybeasts.voyalsuper.model.enums.MarketName;
+import net.bytebuddy.implementation.bind.annotation.Super;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,13 +25,13 @@ public class MarketProduct {
     @NotBlank
     private String url;
 
-    @NotBlank
-    private MarketName supermarket;
+    @ManyToOne
+    private Supermarket supermarket;
 
     public MarketProduct() {
     }
 
-    public MarketProduct(@NotBlank Product product, @NotBlank Double price, @NotBlank String url, @NotBlank MarketName supermarket) {
+    public MarketProduct(@NotBlank Product product, @NotBlank Double price, @NotBlank String url, @NotBlank Supermarket supermarket) {
         this.product = product;
         this.price = price;
         this.url = url;
@@ -70,11 +71,11 @@ public class MarketProduct {
     }
 
 
-    public MarketName getSupermarket() {
+    public Supermarket getSupermarket() {
         return supermarket;
     }
 
-    public void setSupermarket(MarketName supermarket) {
+    public void setSupermarket(Supermarket supermarket) {
         this.supermarket = supermarket;
     }
 }

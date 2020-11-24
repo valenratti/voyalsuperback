@@ -15,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -33,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product addProduct(ProductDto product) {
-        Product toAdd = new Product(product.getDescription(),product.getCategory(),product.getEan(), product.getImgUrl(), new ArrayList<>());
+        Product toAdd = new Product(product.getDescription(),product.getCategory(),product.getEan(), product.getImgUrl());
         return productRepository.save(toAdd);
     }
 
@@ -49,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProductsFromCategory(ProductCategory category) {
-        return null;
+        return productRepository.findAllByCategory(category);
     }
 
     @Override
@@ -64,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product addSupermarketWithStockOfProduct(Product product, MarketName name) {
-        Supermarket market = supermarketRepository.findByName(name);
+        Supermarket market = supermarketRepository.findByName(name).orElseThrow( () ->  new NoSuchElementException("No se encontro el supermercado"));
         product.getMarketsWithStock().add(market);
         return productRepository.save(product);
     }

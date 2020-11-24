@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public interface MarketProductRepository extends JpaRepository<MarketProduct, Long> {
 
-    Optional<MarketProduct> findByProduct_IdAndSupermarketOrderBySupermarket(Long id, MarketName supermarket);
+    Optional<MarketProduct> findByProduct_EanAndSupermarketOrderBySupermarket(String ean, Supermarket supermarket);
 
-    List<MarketProduct> findAllByProduct_Id(Long id);
+    List<MarketProduct> findAllByProduct_Ean(String ean);
 
 }
