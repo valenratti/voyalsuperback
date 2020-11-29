@@ -15,6 +15,9 @@ public class ShoppingCart {
     @CollectionTable(name = "shopping_cart_products", joinColumns = @JoinColumn(name = "shopping_cart_id"))
     private List<ProductOrder> products;
 
+    @ManyToOne
+    private DAOUser owner;
+
     public ShoppingCart() {
     }
 

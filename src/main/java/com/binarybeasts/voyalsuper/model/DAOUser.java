@@ -1,12 +1,15 @@
 package com.binarybeasts.voyalsuper.model;
 
 import com.binarybeasts.voyalsuper.model.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,13 +31,14 @@ public class DAOUser {
     @Email
     private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinTable(
             name = "users_shopping_carts",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "shopping_cart_id")
     )
-    private Set<ShoppingCart> hospitals;
+    private List<ShoppingCart> favouriteShoppingCarts;
 
     @Enumerated(value = EnumType.STRING)
     private UserRole role;
@@ -47,6 +51,7 @@ public class DAOUser {
         this.email = email;
         this.role = role;
         this.deleted = deleted;
+        this.favouriteShoppingCarts = new ArrayList<>();
     }
 
     public DAOUser() {
@@ -85,12 +90,12 @@ public class DAOUser {
         this.email = email;
     }
 
-    public Set<ShoppingCart> getHospitals() {
-        return hospitals;
+    public List<ShoppingCart> getFavouriteShoppingCarts() {
+        return favouriteShoppingCarts;
     }
 
-    public void setHospitals(Set<ShoppingCart> hospitals) {
-        this.hospitals = hospitals;
+    public void setFavouriteShoppingCarts(List<ShoppingCart> favouriteShoppingCarts) {
+        this.favouriteShoppingCarts = favouriteShoppingCarts;
     }
 
     public UserRole getRole() {

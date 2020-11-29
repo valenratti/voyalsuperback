@@ -56,31 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new JwtRequestFilter();
     }
 
-    /*@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors()
-                .and().csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers("/swagger-ui.html/**").permitAll()
-                .antMatchers("/console/**").permitAll()
-                .antMatchers("/api/_healthcheck").permitAll()
-                .antMatchers("/v2/api-docs").permitAll()
-                .antMatchers("/swagger-resources/**").permitAll()
-                .antMatchers("/webjars/**").permitAll()
-                .antMatchers("/authenticate").permitAll()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/admin/names/get-all").hasRole("ADMIN")
-                .antMatchers("/admin/**").hasAnyRole("ADMIN", "HOSPITAL_ADMIN")
-                .antMatchers("/hospital/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.headers().frameOptions().disable();
-    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {

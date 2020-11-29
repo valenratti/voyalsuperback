@@ -10,6 +10,8 @@ public class RegisterUserDto {
 
     private String lastName;
 
+    private String password;
+
     private UserRole role;
 
     public RegisterUserDto() {
@@ -45,5 +47,13 @@ public class RegisterUserDto {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
