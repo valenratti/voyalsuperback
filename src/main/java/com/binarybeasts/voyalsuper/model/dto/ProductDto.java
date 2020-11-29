@@ -16,6 +16,13 @@ public class ProductDto {
 
     private String imgUrl;
 
+    public ProductDto(String description, ProductCategory category, String ean, String imgUrl) {
+        this.description = description;
+        this.category = category;
+        this.ean = ean;
+        this.imgUrl = imgUrl;
+    }
+
     public ProductDto() {
     }
 
