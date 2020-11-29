@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("authenticate")
 public class AuthenticationController {
 
     private final UserService userService;
@@ -35,6 +36,7 @@ public class AuthenticationController {
     private final JwtUserDetailsService myUserDetailsService;
 
     private final JwtUtil jwtTokenUtil;
+
 
     @Autowired
     public AuthenticationController(UserService userService, AuthenticationManager authenticationManager, JwtUserDetailsService myUserDetailsService, JwtUtil jwtTokenUtil) {
