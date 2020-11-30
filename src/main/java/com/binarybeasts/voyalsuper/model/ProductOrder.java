@@ -9,11 +9,19 @@ import javax.persistence.OneToOne;
 public class ProductOrder {
 
     @ManyToOne
-    private MarketProduct product;
+    private Product product;
 
     private int quantity;
 
-    public MarketProduct getProduct() {
+    public ProductOrder() {
+    }
+
+    public ProductOrder(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+
+    public Product getProduct() {
         return product;
     }
 
@@ -21,7 +29,7 @@ public class ProductOrder {
         return quantity;
     }
 
-    public void setProduct(MarketProduct product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

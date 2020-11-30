@@ -18,6 +18,10 @@ public class ShoppingCart {
     @ManyToOne
     private DAOUser owner;
 
+    public ShoppingCart(List<ProductOrder> products) {
+        this.products = products;
+    }
+
     public ShoppingCart() {
     }
 
@@ -37,4 +41,11 @@ public class ShoppingCart {
         this.products = products;
     }
 
+    public DAOUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(DAOUser owner) {
+        this.owner = owner;
+    }
 }

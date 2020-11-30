@@ -7,10 +7,12 @@ import com.binarybeasts.voyalsuper.service.ShoppingCartService;
 import com.binarybeasts.voyalsuper.service.UserService;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired

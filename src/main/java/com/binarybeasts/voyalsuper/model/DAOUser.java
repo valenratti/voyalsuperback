@@ -113,4 +113,8 @@ public class DAOUser {
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
+
+    public void addShoppingCartToFavorites(ShoppingCart shoppingCart){
+        favouriteShoppingCarts.add(shoppingCart);
+    }
 }
