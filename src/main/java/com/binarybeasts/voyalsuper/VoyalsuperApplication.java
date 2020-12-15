@@ -134,7 +134,7 @@ public class VoyalsuperApplication {
                 registry.addMapping("/**")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://localhost:8081");
+                        .allowedOrigins("http://localhost:8081", "http://localhost:8080");
             }
         };
     }
