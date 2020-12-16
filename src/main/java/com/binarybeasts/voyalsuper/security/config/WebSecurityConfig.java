@@ -57,10 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/authenticate/**").permitAll()
+                .antMatchers("**").permitAll()
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/user/**").authenticated()
-                .antMatchers("/swagger-ui.html/**").permitAll()
-                .anyRequest().permitAll().and()
+                .antMatchers("/swagger-ui.html/**").permitAll().and()
                 .cors().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthEntryPoint).
                 and().sessionManagement()
