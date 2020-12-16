@@ -58,8 +58,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/authenticate/**").permitAll()
                 .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers("/user/**").authenticated()
                 .antMatchers("/swagger-ui.html/**").permitAll()
-                .anyRequest().authenticated().and()
+                .anyRequest().permitAll().and()
                 .cors().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthEntryPoint).
                 and().sessionManagement()
