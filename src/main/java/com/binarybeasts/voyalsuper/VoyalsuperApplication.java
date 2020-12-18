@@ -134,7 +134,7 @@ public class VoyalsuperApplication {
                 registry.addMapping("/**")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://localhost:8081", "http://localhost:8080", "https://serene-oasis-15073.herokuapp.com");
+                        .allowedOrigins("http://localhost:8081", "http://localhost:8080", "https://serene-oasis-15073.herokuapp.com", "https://voyalsuper.herokuapp.com");
             }
         };
     }
